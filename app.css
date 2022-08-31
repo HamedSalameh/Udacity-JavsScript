@@ -172,3 +172,8 @@ select {
     display: block;
     font-size: 0.7em;
 }
+
+.error {
+    font-weight: bold;
+    color: red;
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +14,10 @@
     <!-- Link to app.js with defer till HTML render -->
     <script defer src="app.js"></script>
 </head>
+
 <body>
     <header>
-        <h2>Natural History Museum</h2> 
+        <h2>Natural History Museum</h2>
         <h1>Dinosaurs</h1>
         <h3>How do you compare?</h3>
     </header>
@@ -24,11 +26,26 @@
         <div class="form-container">
             <p>Name:</p>
             <input id="name" class="form-field__full" type="text" name="name">
-            <p>Height</p>
-            <label>Feet: <input id="feet" class="form-field__short" type="number" name="feet"></label>
-            <label>inches: <input id="inches" class="form-field__short" type="number" name="inches"></label>
-            <p>Weight:</p>
-            <label><input id="weight" class="form-field__full" type="number" name="weight">lbs</label>
+            <p>Units</p>
+            <input type="radio" id="metric" name="units" value="metric" onclick="updateUnitsPreference()" checked>
+            <label for="metric" class="form-field__short">Metric</label>
+            <input type="radio" id="imperial" name="units" value="imperial" onclick="updateUnitsPreference()">
+            <label for="imperial" class="form-field__short">Imperial</label>
+            <div id='metricFormat'>
+                <p>Height</p>
+                <label>meters: <input id="meters" class="form-field__short" type="number" name="feet"></label>
+                <label>cm: <input id="cm" class="form-field__short" type="number" name="inches"></label>
+                <div id="lengthValidation" class="error"></div>
+                <p>Weight:</p>
+                <label><input id="metric_weight" class="form-field__full" type="number" name="weight">Kg</label>
+            </div>
+            <div id='imperialFormat'>
+                <p>Height</p>
+                <label></label>Feet: <input id="feet" class="form-field__short" type="number" name="feet"></label>
+                <label>inches: <input id="inches" class="form-field__short" type="number" name="inches"></label>
+                <p>Weight:</p>
+                <label><input id="imperial_weight" class="form-field__full" type="number" name="weight">lbs</label>
+            </div>
             <p>Diet:</p>
             <select id="diet" class="form-field__full" name="diet">
                 <option>Herbavor</option>
@@ -36,13 +53,16 @@
                 <option>Carnivor</option>
             </select>
             <div id="btn">Compare Me!</div>
+            <div id="formValidationErrors" class="error"></div>
         </div>
-    </form>
+    </form>    
     <!-- .grid to attach tiles to -->
     <main id="grid"></main>
     <footer>
         <!-- Include information source -->
-        <p class="fine-print">Data Sourced from <a href="https://www.wikipedia.org/">Wikipedia.org</a>, all numbers are approximations.</p>
+        <p class="fine-print">Data Sourced from <a href="https://www.wikipedia.org/">Wikipedia.org</a>, all numbers are
+            approximations.</p>
     </footer>
 </body>
+
 </html>
